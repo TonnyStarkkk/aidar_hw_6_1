@@ -51,7 +51,6 @@ import com.example.aidar_hw_6_1.data.AppDatabase
 fun ProfileScreen(viewModel: ProfileScreenViewModel) {
 
     val state by viewModel.state.collectAsState()
-    val scope = rememberCoroutineScope()
     val toastMessage by viewModel.toastMessage.collectAsState()
     val context = LocalContext.current
     val getContent = rememberLauncherForActivityResult(
@@ -77,7 +76,8 @@ fun ProfileScreen(viewModel: ProfileScreenViewModel) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(
             modifier = Modifier
@@ -87,7 +87,7 @@ fun ProfileScreen(viewModel: ProfileScreenViewModel) {
                 .clickable {
                     getContent.launch("image/*")
                 },
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             if (state.image != null) {
                 Image(

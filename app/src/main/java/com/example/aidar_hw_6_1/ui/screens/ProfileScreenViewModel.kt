@@ -1,8 +1,5 @@
 package com.example.aidar_hw_6_1.ui.screens
 
-import android.net.Uri
-import android.widget.Toast
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.aidar_hw_6_1.data.AppDatabase
@@ -36,7 +33,6 @@ class ProfileScreenViewModel(private val db: AppDatabase) : ViewModel() {
         viewModelScope.launch {
             try {
                 db.profileDao().getAll().firstOrNull()?.let { profile ->
-
                     _state.update {
                         it.copy(
                             id = profile.id,
